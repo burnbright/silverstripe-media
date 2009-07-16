@@ -1,0 +1,61 @@
+#Video{
+	float:right;
+	margin-right:15px;
+}
+
+#Video #player{
+	background:#777;
+	width:320px;
+	height:240px;
+	display:block;
+	border:1px solid #999;
+}
+
+ 
+/* when container is hovered we alter the border color */ 
+#Video #player:hover { 
+    border:1px solid #000; 
+}
+
+#MediaPlaylist{
+	padding:2px;
+	width:400px;
+	height:250px;
+	border:1px solid #ccc;
+	overflow:auto;
+}
+
+
+#MediaPlaylist .mediaitem{
+	padding:2px;
+	display:block;
+	margin-bottom:2px;
+	font-size:11px;
+	text-decoration:none;
+	cursor:pointer;
+	color:#245C92;
+	overflow:hidden;
+}
+#MediaPlaylist .mediaitem:hover,
+#MediaPlaylist .mediaitem.playing{
+	padding: 1px 2px ;
+}
+
+#MediaPlaylist .download,{
+	display:none;
+}
+
+#Video .message{
+	color:#fff;
+	text-align:center;
+	padding-top:100px;
+}
+
+#Video .downloadlinks{
+	margin:0;
+	float:left;
+}
+
+#Video .downloadlinks *{
+	float:left;
+}
