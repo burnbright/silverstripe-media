@@ -19,18 +19,20 @@ class MediaPlayer_Controller extends Page_Controller{
 	}
 	
 	function Playlist(){
-		$playlist = DataObject::get('MediaItem','','Date DESC');
-		if(is_numeric($this->action)){
-			foreach($playlist as $item){
-				if($item->ID == $this->action){
-					$item->LinkingMode = "playing";
-					continue;
+		if($playlist = DataObject::get('MediaItem','','Date DESC')){
+			if(is_numeric($this->action)){
+				foreach($playlist as $item){
+					if($item->ID == $this->action){
+						$item->LinkingMode = "playing";
+						continue;
+					}
 				}
+			}else{
+				$playlist->First()->LinkingMode = "playing";
 			}
-		}else{
-			$playlist->First()->LinkingMode = "playing";
+			return $playlist;
 		}
-		return $playlist;
+		return false;
 	}
 	
 	function Title(){
