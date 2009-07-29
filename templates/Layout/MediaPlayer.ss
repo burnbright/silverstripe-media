@@ -23,7 +23,7 @@ $Content
 
 <div id="MediaPlaylist">
 	<% control Playlist %>
-		    <a class="mediaitem $LinkingMode" href="$Link"> 
+		    <a class="mediaitem<% if LinkingMode = playing %> ui-state-default<% end_if %>" href="$Link"> 
 	        	<% if Date %><span class="date">$Date.DayOfMonth $Date.ShortMonth $Date.Year</span> - <% end_if %>$Title <span>$SubTitle</span>
 					<% if EmbedVideo %><img class="ui-icon ui-icon-image" src="$ThemeDir/images/emptyicon.gif" title="streaming video"/><% end_if %>
 					<% if DownloadVideo %><img class="ui-icon ui-icon-video" src="$ThemeDir/images/emptyicon.gif" title="video download"/><% end_if %>

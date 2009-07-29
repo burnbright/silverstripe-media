@@ -14,7 +14,7 @@ class MediaPlayer_Controller extends Page_Controller{
 		Requirements::javascript('jsparty/jquery/jquery.js');
 		Requirements::javascript('media/flowplayer/flowplayer-3.1.0.min.js');
 		Requirements::javascript('media/flowplayer/flowplayer_config.js');
-		Requirements::javascript('media/flowplayer/flowplayer.playlist.jeremy.js');
+		Requirements::javascript('media/flowplayer/flowplayer.playlist-3.0.5.min.js');
 		Requirements::css('media/css/mediaplayer.css');		
 	}
 	
