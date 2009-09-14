@@ -9,19 +9,24 @@ class MediaItem extends DataObject{
 	);
 	
 	static $searchable_fields = array('Title');	
-	static $summary_fields = array('Title','Date','EmbedVideo.Title','DownloadVideo.Title','MP3.Title' );
+	static $summary_fields = array('Title','Date','EmbedVideo.Title','DownloadVideo.Title','MP3.Title','MediaPage.Title' );
 	
 	static $has_one = array(
 		"EmbedVideo" => "File",
 		"DownloadVideo" => "File",
-		"MP3" => "File"
+		"MP3" => "File",
+		"MediaPage" => "MediaPlayer"
 	);
 	
 	function getCMSFields() {
 		$fields = parent::getCMSFields();
+		
+		$source = DataObject::get('MediaPlayer');
+		
 	   $fields = new FieldSet(
 	   		new TextField('Title',"Title of the media"),
 	   		new TextField('Author',"Speaker/presenter/author"),
+	   		new DropdownField('MediaPageID','Media Page',$source->toDropDownMap()),
 	   		new CalendarDateField('Date'),
 			new FileIFrameField('EmbedVideo',"FLV file to play on website",null,null,null,"Media"),
 			new FileIFrameField('DownloadVideo',"Video file to download",null,null,null,"Media"),

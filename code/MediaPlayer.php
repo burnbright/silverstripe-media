@@ -19,7 +19,8 @@ class MediaPlayer_Controller extends Page_Controller{
 	}
 	
 	function Playlist(){
-		if($playlist = DataObject::get('MediaItem','','Date DESC')){
+		$where = (DataObject::get('MediaPlayer')->Count() > 1) ? 'MediaPageID = '.$this->ID : "" ;
+		if($playlist = DataObject::get('MediaItem',$where,'Date DESC')){
 			if(is_numeric($this->action)){
 				foreach($playlist as $item){
 					if($item->ID == $this->action){
