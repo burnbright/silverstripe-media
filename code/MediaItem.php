@@ -49,7 +49,6 @@ class MediaItem extends DataObject{
 		}elseif($ext = $this->ExternalVid){
 			$vid = $this->renderWith('VimeoPlayer'); //TODO: extend to support youtube, etc
 		}
-		echo "hi mum";
 		return $vid;
 	}
 
