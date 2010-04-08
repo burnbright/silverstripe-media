@@ -12,8 +12,8 @@ class MediaPlayer_Controller extends Page_Controller{
 	function init(){
 		parent::init();
 		Requirements::javascript('jsparty/jquery/jquery.js');
-
-		Requirements::css('media/css/mediaplayer.css');		
+		Requirements::css('media/css/mediaplayer.css');
+		//video type js is loaded on demand
 	}
 	
 	function Playlist(){

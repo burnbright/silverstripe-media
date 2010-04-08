@@ -20,7 +20,7 @@ class MediaItem extends DataObject{
 	
 	function getCMSFields() {
 		$fields = parent::getCMSFields();
-	   $fields = new FieldSet(
+		$fields = new FieldSet(
 	   		new TextField('Title',"Title of the media"),
 	   		new TextField('Author',"Speaker/presenter/author"),
 	   		new TextareaField('Description','Description'),
@@ -29,12 +29,11 @@ class MediaItem extends DataObject{
 			new FileIFrameField('EmbedVideo',"FLV file to play on website",null,null,null,"Media"),
 			new FileIFrameField('DownloadVideo',"Video file to download",null,null,null,"Media"),
 			new FileIFrameField('MP3',"Mp3 audio track",null,null,null,"Media")
-	   );
-	   return $fields;
+		);
+		return $fields;
 	}
 	
 	function Link(){
-		
 		if($player = DataObject::get_one("MediaPlayer")){
 			return $player->Link()."".$this->ID;
 		}
@@ -50,9 +49,8 @@ class MediaItem extends DataObject{
 		}elseif($ext = $this->ExternalVid){
 			$vid = $this->renderWith('VimeoPlayer'); //TODO: extend to support youtube, etc
 		}
-		
+		echo "hi mum";
 		return $vid;
-		
 	}
 
 }
