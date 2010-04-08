@@ -12,28 +12,23 @@ class MediaPlayer_Controller extends Page_Controller{
 	function init(){
 		parent::init();
 		Requirements::javascript('jsparty/jquery/jquery.js');
-		Requirements::javascript('media/flowplayer/flowplayer-3.1.0.min.js');
-		Requirements::javascript('media/flowplayer/flowplayer_config.js');
-		Requirements::javascript('media/flowplayer/flowplayer.playlist-3.0.5.min.js');
-		Requirements::themedCSS('mediaplayer');		
+
+		Requirements::css('media/css/mediaplayer.css');		
 	}
 	
 	function Playlist(){
-		$where = (DataObject::get('MediaPlayer')->Count() > 1) ? 'MediaPageID = '.$this->ID : "" ;
-		if($playlist = DataObject::get('MediaItem',$where,'Date DESC')){
-			if(is_numeric($this->action)){
-				foreach($playlist as $item){
-					if($item->ID == $this->action){
-						$item->LinkingMode = "playing";
-						continue;
-					}
+		$playlist = DataObject::get('MediaItem','','Date DESC');
+		if(is_numeric($this->action)){
+			foreach($playlist as $item){
+				if($item->ID == $this->action){
+					$item->LinkingMode = "playing";
+					continue;
 				}
-			}else{
-				$playlist->First()->LinkingMode = "playing";
 			}
-			return $playlist;
+		}else{
+			$playlist->First()->LinkingMode = "playing";
 		}
-		return false;
+		return $playlist;
 	}
 	
 	function Title(){
