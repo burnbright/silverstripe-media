@@ -6,7 +6,8 @@ class MediaItem extends DataObject{
 		"Description" => "Text",
 		"Date" => "Date",
 		"Author" => "Varchar",
-		"ExternalVid" => "Varchar"
+		"ExternalVid" => "Varchar",
+		"Show" => "boolean"
 	);
 	
 	static $searchable_fields = array('Title');	
@@ -22,6 +23,7 @@ class MediaItem extends DataObject{
 		$fields = parent::getCMSFields();
 		$fields = new FieldSet(
 	   		new TextField('Title',"Title of the media"),
+	   		new CheckboxField("Show","Display on front-end"),
 	   		new TextField('Author',"Speaker/presenter/author"),
 	   		new TextareaField('Description','Description'),
 	   		new TextField('ExternalVid',"External Video ID (Vimeo)"),
