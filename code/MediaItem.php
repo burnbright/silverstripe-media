@@ -7,7 +7,7 @@ class MediaItem extends DataObject{
 		"Date" => "Date",
 		"Author" => "Varchar",
 		"ExternalVid" => "Varchar",
-		"Show" => "boolean"
+		"Show" => "Boolean"
 	);
 	
 	static $searchable_fields = array('Title');	
