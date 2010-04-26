@@ -11,7 +11,7 @@ class MediaItem extends DataObject{
 	);
 	
 	static $searchable_fields = array('Title');	
-	static $summary_fields = array('Title','Date','EmbedVideo.Title','DownloadVideo.Title','MP3.Title' );
+	static $summary_fields = array('Title','Date','EmbedVideo.Title','DownloadVideo.Title','MP3.Title','Show.Nice' );
 	
 	static $has_one = array(
 		"EmbedVideo" => "File",
