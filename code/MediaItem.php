@@ -2,7 +2,7 @@
 class MediaItem extends DataObject{
 	
 	static $db = array(
-		"Title" => "Varchar",
+		"Title" => "Varchar(255)",
 		"Description" => "Text",
 		"Date" => "Date",
 		"Author" => "Varchar",
