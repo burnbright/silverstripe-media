@@ -17,7 +17,7 @@ class MediaPlayer_Controller extends Page_Controller{
 	}
 	
 	function Playlist(){
-		$playlist = DataObject::get('MediaItem','`Show` = TRUE','Date DESC');
+		$playlist = DataObject::get('MediaItem','`Show` = TRUE');
 		if(is_numeric($this->action)){
 			foreach($playlist as $item){
 				if($item->ID == $this->action){

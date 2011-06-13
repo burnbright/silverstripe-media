@@ -20,8 +20,12 @@ $Content
 
 <div id="MediaPlaylist">
 	<% control Playlist %>
-		<a class="mediaitem $LinkingMode" href="$Link"> 
-	        <% if Date %><span class="date">$Date.DayOfMonth $Date.ShortMonth $Date.Year</span> - <% end_if %><span class="title">$Title</span><% if Author %> - <span class="author">$Author</span><% end_if %>
+		<a class="mediaitem $LinkingMode" href="$Link">
+			<% if OverrideTitle %>
+				$Title
+			<% else %>
+	        	<% if Date %><span class="date">$Date.DayOfMonth $Date.ShortMonth $Date.Year</span> - <% end_if %><span class="title">$Title</span><% if Author %> - <span class="author">$Author</span><% end_if %>
+	        <% end_if %>
 			<% if EmbedVideo || ExternalVid %><img class="ui-icon ui-icon-image" src="$ThemeDir/images/emptyicon.gif" title="streaming video"/><% end_if %>
 			<% if DownloadVideo %><img class="ui-icon ui-icon-video" src="$ThemeDir/images/emptyicon.gif" title="video download"/><% end_if %>
 	        <% if MP3 %><img class="ui-icon ui-icon-volume-off" src="$ThemeDir/images/emptyicon.gif" title="mp3"/><% end_if %>

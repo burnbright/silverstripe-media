@@ -7,11 +7,16 @@ class MediaItem extends DataObject{
 		"Date" => "Date",
 		"Author" => "Varchar",
 		"ExternalVid" => "Varchar",
-		"Show" => "Boolean"
+		"Show" => "Boolean",
+		
+		'Sort' => 'Int',
+		'OverrideTitle' => 'Boolean'
 	);
 	
 	static $searchable_fields = array('Title');	
 	static $summary_fields = array('Title','Date','EmbedVideo.Title','DownloadVideo.Title','MP3.Title','Show' );
+	
+	static $default_sort = "Sort DESC, Created DESC";
 	
 	static $has_one = array(
 		"EmbedVideo" => "File",
@@ -23,11 +28,13 @@ class MediaItem extends DataObject{
 		$fields = parent::getCMSFields();
 		$fields = new FieldSet(
 	   		new TextField('Title',"Title of the media"),
+	   		new CheckboxField('OverrideTitle','Override Title (ie only show this title, and not date/author etc)'),
 	   		new CheckboxField("Show","Display on front-end"),
 	   		new TextField('Author',"Speaker/presenter/author"),
 	   		new TextareaField('Description','Description'),
 	   		new TextField('ExternalVid',"External Video ID (Vimeo)"),
 	   		new CalendarDateField('Date'),
+	   		new NumericField('Sort','Sort (higest number shows first)'),
 			new FileIFrameField('EmbedVideo',"FLV file to play on website",null,null,null,"Media"),
 			new FileIFrameField('DownloadVideo',"Video file to download",null,null,null,"Media"),
 			new FileIFrameField('MP3',"Mp3 audio track",null,null,null,"Media")
