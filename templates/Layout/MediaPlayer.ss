@@ -1,4 +1,6 @@
+<div class="typography">
 <h1 class="pagetitle">$Title</h1>
+
 $Content
 <div id="Video" >
 	$Video
@@ -31,4 +33,5 @@ $Content
 	        <% if MP3 %><img class="ui-icon ui-icon-volume-off" src="$ThemeDir/images/emptyicon.gif" title="mp3"/><% end_if %>
 	   	</a>
 	<% end_control %>
+</div>
 </div>

@@ -44,7 +44,7 @@ class MediaItem extends DataObject{
 	
 	function Link(){
 		if($player = DataObject::get_one("MediaPlayer")){
-			return $player->Link()."".$this->ID;
+			return $player->Link('view')."/".$this->ID;
 		}
 		return false;	
 	}

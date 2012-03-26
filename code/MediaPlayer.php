@@ -2,25 +2,27 @@
 class MediaPlayer extends Page{
 	
 	static $icon = "media/images/ipod";
-	static $db = array(
-	);
 	
 }
 
 class MediaPlayer_Controller extends Page_Controller{
 	
+	static $allowed_actions = array(
+		'view'
+	);
+	
 	function init(){
 		parent::init();
-		Requirements::javascript('jsparty/jquery/jquery.js');
+		Requirements::javascript(THIRDPARTY_DIR.'/jquery/jquery.js');
 		Requirements::css('media/css/mediaplayer.css');
-		//video type js is loaded on demand
+		$this->videoid = $this->getRequest()->param('ID');
 	}
 	
 	function Playlist(){
 		$playlist = DataObject::get('MediaItem','`Show` = TRUE');
-		if(is_numeric($this->action)){
+		if(is_numeric($this->videoid)){
 			foreach($playlist as $item){
-				if($item->ID == $this->action){
+				if($item->ID == $this->videoid){
 					$item->LinkingMode = "playing";
 					continue;
 				}
@@ -32,25 +34,20 @@ class MediaPlayer_Controller extends Page_Controller{
 	}
 	
 	function Title(){
-		if(is_numeric($this->action)){
+		if(is_numeric($this->videoid)){
 			return $this->Data()->Title." - ".$this->Video()->Title;
 		}
 		return $this->Data()->Title;
 	}
 	
 	function Video(){
-		if(is_numeric($this->action) && $item = DataObject::get_by_id("MediaItem",$this->action)){
+		if(is_numeric($this->videoid) && $item = DataObject::get_by_id("MediaItem",$this->videoid)){
 			return $item;
 		}
 		if($this->Playlist()){
 			return $this->Playlist()->First();
 		}
 		return false;
-	}
-	
-	function rss(){
-		//stub for rss podcast feed
-		return "rss feed here";
 	}
 	
 }
