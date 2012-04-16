@@ -8,3 +8,12 @@ body.ModelAdmin #right .ajaxActions {
 	position:fixed;
 	right:25px;
 }
+
+
+body.ModelAdmin #right{
+	overflow:auto !important;
+}
+
+#Form_ResultsForm{
+	overflow:inherit !important;
+}
