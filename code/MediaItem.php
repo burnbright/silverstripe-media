@@ -33,12 +33,13 @@ class MediaItem extends DataObject{
 	   		new TextField('Author',"Speaker/presenter/author"),
 	   		new TextareaField('Description','Description'),
 	   		new TextField('ExternalVid',"External Video ID (Vimeo)"),
-	   		new CalendarDateField('Date'),
+	   		$date = new DateField('Date'),
 	   		new NumericField('Sort','Sort (higest number shows first)'),
 			new FileIFrameField('EmbedVideo',"FLV file to play on website",null,null,null,"Media"),
 			new FileIFrameField('DownloadVideo',"Video file to download",null,null,null,"Media"),
 			new FileIFrameField('MP3',"Mp3 audio track",null,null,null,"Media")
 		);
+		$date->setConfig('showcalendar',true);
 		return $fields;
 	}
 	

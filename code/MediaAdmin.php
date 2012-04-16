@@ -14,7 +14,7 @@ class MediaAdmin extends ModelAdmin {
 		Requirements::javascript(THIRDPARTY_DIR . "/calendar/calendar.js");
 		Requirements::javascript(THIRDPARTY_DIR . "/calendar/lang/calendar-en.js");
 		Requirements::javascript(THIRDPARTY_DIR . "/calendar/calendar-setup.js");
-		Requirements::css(SAPPHIRE_DIR . "/css/CalendarDateField.css");
+		Requirements::css(SAPPHIRE_DIR . "/css/DatetimeField.css");
 		Requirements::css(THIRDPARTY_DIR . "/calendar/calendar-win2k-1.css");
 		
 		Requirements::css('media/css/adminfix.css');
