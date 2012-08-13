@@ -14,12 +14,12 @@ class MediaPlayer_Controller extends Page_Controller{
 	function init(){
 		parent::init();
 		Requirements::javascript(THIRDPARTY_DIR.'/jquery/jquery.js');
-		Requirements::css('media/css/mediaplayer.css');
 		$this->videoid = $this->getRequest()->param('ID');
 	}
 	
-	function Playlist(){
-		$playlist = DataObject::get('MediaItem','`Show` = TRUE');
+	function Playlist(){		
+		$filter = "\"Show\" = TRUE";
+		$playlist = DataObject::get('MediaItem',$filter);
 		if(is_numeric($this->videoid)){
 			foreach($playlist as $item){
 				if($item->ID == $this->videoid){
@@ -34,7 +34,7 @@ class MediaPlayer_Controller extends Page_Controller{
 	}
 	
 	function Title(){
-		if(is_numeric($this->videoid)){
+		if($this->Video()){
 			return $this->Data()->Title." - ".$this->Video()->Title;
 		}
 		return $this->Data()->Title;
@@ -51,5 +51,3 @@ class MediaPlayer_Controller extends Page_Controller{
 	}
 	
 }
-
-?>

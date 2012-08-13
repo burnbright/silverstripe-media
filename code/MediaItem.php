@@ -10,7 +10,8 @@ class MediaItem extends DataObject{
 		"Show" => "Boolean",
 		
 		'Sort' => 'Int',
-		'OverrideTitle' => 'Boolean'
+		'OverrideTitle' => 'Boolean',
+		'MembersOnly' => 'Boolean' //TODO: could be a Group instead
 	);
 	
 	static $searchable_fields = array('Title');	
@@ -27,14 +28,15 @@ class MediaItem extends DataObject{
 	function getCMSFields() {
 		$fields = parent::getCMSFields();
 		$fields = new FieldSet(
-	   		new TextField('Title',"Title of the media"),
-	   		new CheckboxField('OverrideTitle','Override Title (ie only show this title, and not date/author etc)'),
-	   		new CheckboxField("Show","Display on front-end"),
-	   		new TextField('Author',"Speaker/presenter/author"),
-	   		new TextareaField('Description','Description'),
-	   		new TextField('ExternalVid',"External Video ID (Vimeo)"),
-	   		$date = new DateField('Date'),
-	   		new NumericField('Sort','Sort (higest number shows first)'),
+   		new TextField('Title',"Title of the media"),
+   		new CheckboxField('OverrideTitle','Override Title (ie only show this title, and not date/author etc)'),
+   		new CheckboxField("Show","Display on front-end"),
+			new CheckboxField("MembersOnly","Display to members only"),
+   		new TextField('Author',"Speaker/presenter/author"),
+   		new TextareaField('Description','Description'),
+   		new TextField('ExternalVid',"External Video ID (Vimeo)"),
+   		$date = new DateField('Date'),
+   		new NumericField('Sort','Sort (higest number shows first)'),
 			new FileIFrameField('EmbedVideo',"FLV file to play on website",null,null,null,"Media"),
 			new FileIFrameField('DownloadVideo',"Video file to download",null,null,null,"Media"),
 			new FileIFrameField('MP3',"Mp3 audio track",null,null,null,"Media")
@@ -61,7 +63,11 @@ class MediaItem extends DataObject{
 		}
 		return $vid;
 	}
+	
+	function canView(){
+		if($this->MembersOnly && !Member::currentUser())
+			return false;
+		return true;
+	}
 
 }
-
-?>

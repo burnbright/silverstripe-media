@@ -15,13 +15,10 @@ class VimeoPlayer extends MediaPlayer{
 
 }
 
-
 class VimeoPlayer_Controller extends MediaPlayer_Controller{
 	
 	function Video(){
-		
 		//$vimsvc = new ViemoService("http://vimeo.com/api/v2/");
-		
 		return null;
 	}
 	
@@ -53,4 +50,3 @@ class VimeoPlayer_Controller extends MediaPlayer_Controller{
 	}
 		
 }
-?>
