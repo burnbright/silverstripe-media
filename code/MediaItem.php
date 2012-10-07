@@ -17,7 +17,7 @@ class MediaItem extends DataObject{
 	static $searchable_fields = array('Title');	
 	static $summary_fields = array('Title','Date','EmbedVideo.Title','DownloadVideo.Title','MP3.Title','Show' );
 	
-	static $default_sort = "Sort DESC, Created DESC";
+	static $default_sort = "Sort DESC, Date DESC, Created DESC";
 	
 	static $has_one = array(
 		"EmbedVideo" => "File",
